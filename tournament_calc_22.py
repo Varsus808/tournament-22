@@ -103,7 +103,12 @@ def deckcheck(decklist):
 				print(api_url)
 				out += f"-{simple}\n"
 			else: 
-				out += f"+{simple}\n"
+				flaggy = False
+				for elem in data["data"]:
+					if elem["name"].lower() == simple.lower() and flaggy == False:
+						out += f"+{simple}\n"
+						flaggy = True
+						
 	out += "```\n"
 	return out
 
@@ -117,8 +122,10 @@ async def run_blocking(blocking_func: typing.Callable, *args, **kwargs) -> typin
 async def on_message(message):
 	if not isinstance(message.channel, discord.channel.DMChannel):
 		return 
+
 	if message.author == client.user:
 		return
+
 	await message.channel.send("Please give me some Minutes<3```diff\n+Green cards are legal\n-Red cards are illegal```\n")
 	usr_message = message.content.splitlines()
 	
