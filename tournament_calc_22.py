@@ -84,7 +84,7 @@ def simplify_line(string):
 def deckcheck(decklist):
 	base_url = "https://api.scryfall.com/cards/search?q=" + urllib.parse.quote("(r:u or r:c) (set:sunf OR set:unf OR set:und OR set:ust OR set:unh OR set:ugl)")
 	out_errors = ""
-	decklist = decklist.splitlines()
+	
 	print(type(decklist))
 	for line in decklist:
 		print(decklist, line)
@@ -105,11 +105,14 @@ def deckcheck(decklist):
 async def on_message(message):
 	if message.author == client.user:
 		return
-	
-	response = deckcheck(message.content)
-	#response = "Hullo"
-	
+	usr_message = message.content.splitlines()
+	usr_message_1 = usr_message[:len(usr_message)//2]
+	usr_message_2 = usr_message[len(usr_message)//2:]
+	response = deckcheck(usr_message_1)
 	await message.channel.send(response)
+	response = deckcheck(usr_message_2)
+	await message.channel.send(response)
+
 
 client.run(TOKEN)
 
