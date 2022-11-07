@@ -118,7 +118,8 @@ async def on_message(message):
 	if message.author == client.user:
 		return
 	await message.channel.send("Please give me some Minutes<3```diff\n+Green cards are legal\n-Red cards are illegal```\n")
-
+	usr_message = message.content.splitlines()
+	
 	text = await run_blocking(deckcheck, usr_message[:])
 	await message.channel.send(text)
 
