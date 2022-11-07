@@ -73,7 +73,7 @@ async def on_ready():
 async def on_member_join(member):
 	await member.create_dm()
 	await member.dm_channel.send(
-		f'Hi {member.name}, welcome to the Un+Common Tournament 2022 server!\nIf you want your Deck checked, please respond with /Deckcheck'
+		f'Hi {member.name}, welcome to the Un+Common Tournament 2022 server!\nIf you want your Deck checked, please respond with just post your Decklist unchanged the MTGO Format!!!'
 	)
 
 def simplify_line(string):
@@ -125,4 +125,3 @@ async def on_message(message):
 
 
 client.run(TOKEN)
-
