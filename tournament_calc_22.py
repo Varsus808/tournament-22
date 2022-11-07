@@ -108,6 +108,8 @@ def deckcheck(decklist):
 					if elem["name"].lower() == simple.lower() and flaggy == False:
 						out += f"+{simple}\n"
 						flaggy = True
+				if flaggy == False:
+					out += f"-{simple}\n"
 						
 	out += "```\n"
 	return out
