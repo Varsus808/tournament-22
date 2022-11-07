@@ -115,6 +115,8 @@ async def run_blocking(blocking_func: typing.Callable, *args, **kwargs) -> typin
 
 @client.event
 async def on_message(message):
+	if not isinstance(message.channel, discord.channel.DMChannel):
+		return 
 	if message.author == client.user:
 		return
 	await message.channel.send("Please give me some Minutes<3```diff\n+Green cards are legal\n-Red cards are illegal```\n")
